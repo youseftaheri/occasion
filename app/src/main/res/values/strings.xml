@@ -1,0 +1,52 @@
+<resources>
+    <string-array name="occasion_type">
+        <item>تولد</item>
+        <item>شخصی</item>
+        <item>متفرقه</item>
+    </string-array>
+
+    <string name="app_name">Occasion</string>
+    <string name="birthday">تولد</string>
+    <string name="personalPlan">شخصی</string>
+    <string name="others">متفرقه</string>
+    <string name="occasionList">لیست مناسبت ها</string>
+    <string name="sureToDelete">آیا از حذف این زمانبندی اطمینان دارید؟</string>
+    <string name="yes">بله</string>
+    <string name="no">خیر</string>
+    <string name="ok">باشه</string>
+    <string name="empty_type">انتخاب نوع الزامی است</string>
+    <string name="empty_title">واردکردن عنوان الزامی است</string>
+    <string name="empty_date">واردکردن تاریخ الزامی است</string>
+    <string name="empty_time">واردکردن زمان الزامی است</string>
+    <string name="register">ثبت</string>
+    <string name="occasion_title">عنوان</string>
+    <string name="occasion_date">تاریخ</string>
+    <string name="occasion_time">زمان</string>
+    <string name="occasionRegistration">ثبت مناسبت</string>
+    <string name="toast_image_intent_null">خطا در نمایش گزینه های انتخاب تصویر!</string>
+    <string name="failed_to_capture_image">دوباره تلاش کنید.</string>
+    <string name="take_photo">عکس گرفتن</string>
+    <string name="choose_image">انتخاب از گالری</string>
+    <string name="gallery_permission_required">برای آپلود عکس، دسترسی به گالری لازم است</string>
+    <string name="camera_permission_required">برای استفاده از دوربین، اجازه دسترسی لازم است.</string>
+    <string name="failed_to_fetch">لطفا دوباره تلاش کنید</string>
+    <string name="editPhoto">برش و برزگنمایی تصویر</string>
+
+    <string name="lbl_set_profile_photo">Set profile image</string>
+    <string name="lbl_take_camera_picture">Take a picture</string>
+    <string name="lbl_choose_from_gallery">Choose from gallery</string>
+    <string name="dialog_permission_title">Grant Permissions</string>
+    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="go_to_settings">GOTO SETTINGS</string>
+    <string name="cancel">cancel</string>
+
+    <string name="add_ticket_image">عکس مرتبط را وارد نمایید</string>
+    <string name="birthday_list_empty">تولدی ثبت نشده است</string>
+    <string name="personal_plan_list_empty">برنامه شخصی ثبت نشده است</string>
+    <string name="others_list_empty">مناسبت متفرقه ای ثبت نشده است</string>
+    <string name="hour">ساعت</string>
+    <string name="minute">دقیقه</string>
+    <string name="selectTime">انتخاب زمان</string>
+
+
+</resources>

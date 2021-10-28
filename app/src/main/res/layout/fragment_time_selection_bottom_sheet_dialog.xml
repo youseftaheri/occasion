@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/transparent"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="locale">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_5sdp"
+            android:src="@drawable/gradient_transparent_gray_button_back"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hour"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_10sdp"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+
+                <com.iranwebyar.occasions.utils.WheelView
+                    android:id="@+id/wvHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_110sdp"
+                    app:wheel_select_color="@color/colorPrimary"
+                    app:wheel_lines = "5"
+                    android:elevation="@dimen/_3sdp"
+                    app:wheel_normal_color="@color/lightPurple"
+                    app:wheel_line_spacing="13"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvMinute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/minute"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_10sdp"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+
+                <com.iranwebyar.occasions.utils.WheelView
+                    android:id="@+id/wvMinute"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_110sdp"
+                    app:wheel_select_color="@color/colorPrimary"
+                    app:wheel_lines = "5"
+                    android:elevation="@dimen/_3sdp"
+                    app:wheel_normal_color="@color/lightPurple"
+                    app:wheel_line_spacing="13"/>
+            </LinearLayout>
+        </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/firstButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/selectTime"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_60sdp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/gradient_bg_entry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../../../layout/custom_preview.xml" value="0.13148148148148148" />
+        <entry key="app/src/main/res/drawable/custom_dialog_bg.xml" value="0.287962962962963" />
+        <entry key="app/src/main/res/drawable/custom_gray_bg_with_border.xml" value="0.20104166666666667" />
+        <entry key="app/src/main/res/drawable/custom_progress_bg.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/gradient_bg.xml" value="0.287962962962963" />
+        <entry key="app/src/main/res/drawable/gradient_bg_entry.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/gradient_light_dialog_back.xml" value="0.287962962962963" />
+        <entry key="app/src/main/res/drawable/gradient_transparent_back.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/gradient_transparent_gray_button_back.xml" value="0.33611111111111114" />
+        <entry key="app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.20277777777777778" />
+        <entry key="app/src/main/res/drawable/rectangle_white_transparent.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/toast_border.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_birthday_list.xml" value="0.32653985507246375" />
+        <entry key="app/src/main/res/layout/activity_card_list.xml" value="0.17299898682877407" />
+        <entry key="app/src/main/res/layout/activity_entry.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_image_picker.xml" value="0.32653985507246375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_new_card.xml" value="0.32653985507246375" />
+        <entry key="app/src/main/res/layout/activity_new_occasion.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_occasion_list.xml" value="0.1661600810536981" />
+        <entry key="app/src/main/res/layout/activity_quiz.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/custom_toast.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/custom_toolbar.xml" value="0.15932117527862208" />
+        <entry key="app/src/main/res/layout/customized_allert.xml" value="0.32653985507246375" />
+        <entry key="app/src/main/res/layout/dialog_image_picker.xml" value="0.32653985507246375" />
+        <entry key="app/src/main/res/layout/fragment_birthday_list.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/layout/fragment_entry_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_question.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_time_selection_bottom_sheet_dialog.xml" value="0.3416666666666667" />
+        <entry key="app/src/main/res/layout/item_answer_view.xml" value="0.1661600810536981" />
+        <entry key="app/src/main/res/layout/item_occasion_view.xml" value="0.32653985507246375" />
+        <entry key="app/src/main/res/layout/progress_spinner.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/score_allert.xml" value="0.18840579710144928" />
+        <entry key="app/src/main/res/layout/simple_allert.xml" value="0.32653985507246375" />
+        <entry key="app/src/main/res/layout/swipe_lockable_viewpager.xml" value="0.16077898550724637" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1638888888888889" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

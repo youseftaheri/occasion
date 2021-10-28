@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WheelView">
+        <attr name="wheel_select_color" format="color" />
+        <attr name="wheel_normal_color" format="color" />
+        <attr name="wheel_line_spacing" format="integer" />
+        <attr name="wheel_lines" format="integer" />
+    </declare-styleable>
+</resources>
