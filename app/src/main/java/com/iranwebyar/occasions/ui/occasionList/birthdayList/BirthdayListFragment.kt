@@ -40,14 +40,15 @@ class BirthdayListFragment : BaseFragment<FragmentBirthdayListBinding, BirthdayL
         super.onViewCreated(view, savedInstanceState)
         mFragmentBirthdayListBinding = viewDataBinding
         mLayoutManager = LinearLayoutManager(this.requireContext())
-        viewModel.fetchData
+        setCards()
+//        viewModel.fetchData
 //        mFragmentBirthdayListBinding!!.swipeRefresh.setOnRefreshListener {
 //            mFragmentBirthdayListBinding!!.swipeRefresh.isRefreshing = false
 //            viewModel.fetchData
 //        }
     }
 
-    override fun setCards() {
+    fun setCards() {
         mLayoutManager!!.orientation = LinearLayoutManager.VERTICAL
         mFragmentBirthdayListBinding!!.recyclerView.layoutManager = mLayoutManager
         mFragmentBirthdayListBinding!!.recyclerView.itemAnimator = DefaultItemAnimator()

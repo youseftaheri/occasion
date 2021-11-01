@@ -180,7 +180,7 @@ dependencies {
 
     //reduce image size
 //    implementation 'id.zelory:compressor:3.0.1'
-    implementation 'id.zelory:compressor:2.1.0'
+//    implementation 'id.zelory:compressor:2.1.0'
 
     //match recycler item
     implementation 'com.google.android:flexbox:2.0.1'

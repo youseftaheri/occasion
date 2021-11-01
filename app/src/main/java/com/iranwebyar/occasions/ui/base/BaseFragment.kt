@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.iranwebyar.occasions.utils.CommonUtils
 import com.iranwebyar.occasions.utils.CommonUtils.showLoadingDialog
+import com.iranwebyar.occasions.utils.MyToast
 import dagger.hilt.android.internal.managers.FragmentComponentManager
 import javax.inject.Inject
 
@@ -91,6 +92,10 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>?> : Fragme
 
     fun hideKeyboard() {
         baseActivity?.hideKeyboard()
+    }
+
+    fun handleError(exception: String?) {
+            MyToast.show(activity, exception, true)
     }
 
     val isNetworkConnected: Boolean

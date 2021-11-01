@@ -50,7 +50,8 @@ class OccasionListActivity : BaseActivity<ActivityOccasionListBinding, OccasionL
         //to prevent animation lag
         mActivityOccasionListBinding!!.root.setLayerType(View.LAYER_TYPE_HARDWARE, null)
         mActivityOccasionListBinding!!.tabs.layoutDirection = View.LAYOUT_DIRECTION_LTR
-        viewModel.entry
+        setUp()
+//        viewModel.entry
     }
 
     override fun setUp() {
@@ -63,6 +64,10 @@ class OccasionListActivity : BaseActivity<ActivityOccasionListBinding, OccasionL
         mActivityOccasionListBinding!!.tabs.addTab(mActivityOccasionListBinding!!.tabs.newTab().setText(getString(R.string.birthday)))
         mActivityOccasionListBinding!!.viewPager.offscreenPageLimit = mActivityOccasionListBinding!!.tabs.tabCount
         mActivityOccasionListBinding!!.viewPager.currentItem = mActivityOccasionListBinding!!.tabs.tabCount
+//        val adapter = TabFragmentAdapter(supportFragmentManager)
+//        adapter.addFragment(FragmentOne.newInstance(), "Tab 1")
+//        adapter.addFragment(FragmentTwo.newInstance(), "Tab 2")
+//        mActivityOccasionListBinding!!.viewPager.setAdapter(adapter)
         mActivityOccasionListBinding!!.tabs.setupWithViewPager(mActivityOccasionListBinding!!.viewPager)
 
         //Determine indicator width at runtime
@@ -79,14 +84,14 @@ class OccasionListActivity : BaseActivity<ActivityOccasionListBinding, OccasionL
 
         mActivityOccasionListBinding!!.viewPager.addOnPageChangeListener(object : OnPageChangeListener {
             //To move the indicator as the user scroll, we will need the scroll offset values
-            //positionOffset is a value from [0..1] which represents how far the page has been scrolled
+            //positionOffset is a value from [0..2] which represents how far the page has been scrolled
             //see https://developer.android.com/reference/android/support/v4/view/ViewPager.OnPageChangeListener
             override fun onPageScrolled(i: Int, positionOffset: Float, positionOffsetPx: Int) {
                 val params = mActivityOccasionListBinding!!.indicator.layoutParams
 
                 //Multiply positionOffset with indicatorWidth to get translation
                 val positionIndex: Int
-                if(i == 0) positionIndex = 1 else positionIndex = 0
+                if(i == 0) positionIndex = 2 else if(i == 1) positionIndex = 1 else positionIndex = 0
                 val translationOffset: Float = (-positionOffset + positionIndex) * indicatorWidth
 //                params.leftMargin = translationOffset.toInt()
 //                mActivityOccasionListBinding!!.indicator.layoutParams = params
@@ -95,7 +100,7 @@ class OccasionListActivity : BaseActivity<ActivityOccasionListBinding, OccasionL
                 param.setMargins(0,0,translationOffset.toInt(),0)
                 mActivityOccasionListBinding!!.indicator.layoutParams = param
 
-//                mOccasionListViewModel!!.setLeftMargin(translationOffset.toInt())
+//                mEntryViewModel!!.setLeftMargin(translationOffset.toInt())
             }
 
             override fun onPageSelected(i: Int) {}
@@ -141,7 +146,7 @@ class OccasionListActivity : BaseActivity<ActivityOccasionListBinding, OccasionL
         startNewActivity(NewOccasionActivity::class.java, isFinishAll = false, isCurrentFinish = false)
     }
 
-    fun deleteCard(cardId: String) {
+    fun deleteCard(cardId: Long) {
         val inflater = mContext!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val alertDialog: AlertDialog
         val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(mContext)

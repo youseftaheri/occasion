@@ -12,7 +12,7 @@ interface OccasionDao {
     suspend fun delete(occasion: Occasion?)
 
     @Query("SELECT * FROM occasions WHERE id LIKE :id LIMIT 1")
-    suspend fun findById(id: String?): Occasion?
+    suspend fun findById(id: Long?): Occasion?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(occasion: Occasion?)

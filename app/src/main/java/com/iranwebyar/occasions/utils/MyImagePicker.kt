@@ -24,7 +24,7 @@ import com.iranwebyar.occasions.ui.imagePicker.ImagePickerActivity
 import com.iranwebyar.occasions.utils.CommonUtils.getRealPathFromURI
 import com.iranwebyar.occasions.utils.CommonUtils.showToast
 import com.google.android.material.internal.ContextUtils.getActivity
-import id.zelory.compressor.Compressor
+//import id.zelory.compressor.Compressor
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 import java.io.IOException
@@ -215,17 +215,18 @@ object MyImagePicker {
                             chosenImageUri!!
                         )
                     val imageFile = File(realPath)
-                    val compImage = Compressor(mContext)
-                        .setMaxWidth(800)
-                        .setMaxHeight(600)
-                        .setQuality(90)
-                        .setCompressFormat(Bitmap.CompressFormat.JPEG)
-                        .setDestinationDirectoryPath(
-                            Environment.getExternalStoragePublicDirectory(
-                                Environment.DIRECTORY_PICTURES
-                            ).absolutePath
-                        )
-                        .compressToFile(imageFile)
+                    val compImage = imageFile
+//                    val compImage = Compressor(mContext)
+//                        .setMaxWidth(800)
+//                        .setMaxHeight(600)
+//                        .setQuality(90)
+//                        .setCompressFormat(Bitmap.CompressFormat.JPEG)
+//                        .setDestinationDirectoryPath(
+//                            Environment.getExternalStoragePublicDirectory(
+//                                Environment.DIRECTORY_PICTURES
+//                            ).absolutePath
+//                        )
+//                        .compressToFile(imageFile)
                     if (compImage != null) {
                         realPath = compImage.absolutePath
                         if (imageFile.exists()) {
@@ -267,17 +268,18 @@ object MyImagePicker {
                             chosenImageUri!!
                         )
                     val imageFile = File(realPath)
-                    val compImage = Compressor(mContext)
-                        .setMaxWidth(800)
-                        .setMaxHeight(600)
-                        .setQuality(90)
-                        .setCompressFormat(Bitmap.CompressFormat.JPEG)
-                        .setDestinationDirectoryPath(
-                            Environment.getExternalStoragePublicDirectory(
-                                Environment.DIRECTORY_PICTURES
-                            ).absolutePath
-                        )
-                        .compressToFile(imageFile)
+                    val compImage = imageFile
+//                    val compImage = Compressor(mContext)
+//                        .setMaxWidth(800)
+//                        .setMaxHeight(600)
+//                        .setQuality(90)
+//                        .setCompressFormat(Bitmap.CompressFormat.JPEG)
+//                        .setDestinationDirectoryPath(
+//                            Environment.getExternalStoragePublicDirectory(
+//                                Environment.DIRECTORY_PICTURES
+//                            ).absolutePath
+//                        )
+//                        .compressToFile(imageFile)
                     if (compImage != null) {
                         realPath = compImage.absolutePath
                         if (imageFile.exists()) {
@@ -312,21 +314,22 @@ object MyImagePicker {
             if (resultCode == Activity.RESULT_OK) {
                 val imageFile = File(cameraClickPath)
                 var compImage: File? = null
-                try {
-                    compImage = Compressor(mContext)
-                        .setMaxWidth(800)
-                        .setMaxHeight(600)
-                        .setQuality(90)
-                        .setCompressFormat(Bitmap.CompressFormat.JPEG)
-                        .setDestinationDirectoryPath(
-                            Environment.getExternalStoragePublicDirectory(
-                                Environment.DIRECTORY_PICTURES
-                            ).absolutePath
-                        )
-                        .compressToFile(imageFile)
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
+                compImage = imageFile
+//                try {
+//                    compImage = Compressor(mContext)
+//                        .setMaxWidth(800)
+//                        .setMaxHeight(600)
+//                        .setQuality(90)
+//                        .setCompressFormat(Bitmap.CompressFormat.JPEG)
+//                        .setDestinationDirectoryPath(
+//                            Environment.getExternalStoragePublicDirectory(
+//                                Environment.DIRECTORY_PICTURES
+//                            ).absolutePath
+//                        )
+//                        .compressToFile(imageFile)
+//                } catch (e: IOException) {
+//                    e.printStackTrace()
+//                }
                 if (compImage != null) {
                     cameraClickPath = compImage.absolutePath
                     EventBus.getDefault()

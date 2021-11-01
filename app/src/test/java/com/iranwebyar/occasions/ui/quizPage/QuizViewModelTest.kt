@@ -3,7 +3,7 @@ package com.iranwebyar.occasions.ui.quizPage
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.iranwebyar.occasions.data.DataManager
 import com.iranwebyar.occasions.data.FakeQuestions
-import com.iranwebyar.occasions.data.model.QuestionsPOJO
+import com.iranwebyar.occasions.data.model.OccasionsPOJO
 import com.iranwebyar.occasions.utils.CoroutineTestRule
 import com.iranwebyar.occasions.utils.TestCoroutineRule
 import com.iranwebyar.occasions.utils.rx.TestSchedulerProvider
@@ -65,10 +65,10 @@ class QuizViewModelTest {
     @Test
     fun testShowDetailsError(){
         testCoroutineRule.runBlockingTest {
-            val contactResponse = Gson().fromJson(FakeQuestions().data, QuestionsPOJO.Data::class.java)
+            val contactResponse = Gson().fromJson(FakeQuestions().data, OccasionsPOJO.Data::class.java)
             doReturn(contactResponse)
                 .`when`(mMockDataManager)
-                ?.questionsData//("1111111111")
+                ?.occasionsData//("1111111111")
 
             mSchedulesViewModel?.showDetails("1111111111")
             verify(mSchedulesCallback)?.showLoading()

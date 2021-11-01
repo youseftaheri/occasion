@@ -2,15 +2,20 @@ package com.iranwebyar.occasions.di.module
 
 import android.app.Application
 import android.content.Context
+import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.iranwebyar.occasions.data.AppDataManager
 import com.iranwebyar.occasions.data.DataManager
+import com.iranwebyar.occasions.data.local.db.AppDatabase
+import com.iranwebyar.occasions.data.local.db.AppDbHelper
+import com.iranwebyar.occasions.data.local.db.DbHelper
 import com.iranwebyar.occasions.data.local.prefs.AppPreferencesHelper
 import com.iranwebyar.occasions.data.local.prefs.PreferencesHelper
 import com.iranwebyar.occasions.data.remote.ApiHelper
 import com.iranwebyar.occasions.data.remote.Apis
 import com.iranwebyar.occasions.data.remote.AppApiHelper
+import com.iranwebyar.occasions.di.DatabaseInfo
 import com.iranwebyar.occasions.di.PreferenceInfo
 import com.iranwebyar.occasions.utils.CommonUtils
 import com.iranwebyar.occasions.utils.Const
@@ -77,6 +82,26 @@ class AppModule {
     @Provides
     fun provideUtils(context: Context?): CommonUtils {
         return CommonUtils
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppDatabase(@DatabaseInfo dbName: String?, context: Context?): AppDatabase {
+        return Room.databaseBuilder(context!!, AppDatabase::class.java, dbName!!)
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDbHelper(appDbHelper: AppDbHelper): DbHelper {
+        return appDbHelper
+    }
+
+    @Provides
+    @DatabaseInfo
+    fun provideDatabaseName(): String? {
+        return Const.DB_NAME
     }
 
 //    @Singleton

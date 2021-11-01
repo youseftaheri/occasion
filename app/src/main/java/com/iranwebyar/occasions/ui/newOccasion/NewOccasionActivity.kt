@@ -40,6 +40,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.graphics.Color
 import android.util.Log
+import com.iranwebyar.occasions.utils.MyToast
 import org.jetbrains.annotations.NotNull
 
 
@@ -76,7 +77,7 @@ class NewOccasionActivity : BaseActivity<ActivityNewOccasionBinding, NewOccasion
         onBackPressed()
     }
 
-    override fun successfulOccasionAdd(exception: String?) {
+    override fun successfulOccasionAdd() {
                 onOccasionClick()
     }
 
@@ -91,17 +92,33 @@ class NewOccasionActivity : BaseActivity<ActivityNewOccasionBinding, NewOccasion
     }
 
     override fun onSubmitClick() {
+        mActivityNewOccasionBinding!!.tilTitle.error = ""
         when {
             Objects.requireNonNull(mActivityNewOccasionBinding!!.etTitle.text).toString().trim { it <= ' ' }.isEmpty() ->
                 mActivityNewOccasionBinding!!.tilTitle.error = getString(R.string.empty_title)
+            Objects.requireNonNull(mActivityNewOccasionBinding!!.tvDate.text).toString().trim { it <= ' ' }.isEmpty() ->
+                MyToast.show(this, getString(R.string.empty_date), true)
+            Objects.requireNonNull(mActivityNewOccasionBinding!!.tvTime.text).toString().trim { it <= ' ' }.isEmpty() ->
+                MyToast.show(this, getString(R.string.empty_time), true)
             else -> {
                 viewModel.requestRegisterOccasion(
                     mActivityNewOccasionBinding!!.etTitle.text.toString().trim { it <= ' ' },
                     mActivityNewOccasionBinding!!.spinnerOccasion.selectedItem.toString(),
                     mActivityNewOccasionBinding!!.tvDate.text.toString().trim { it <= ' ' },
                     mActivityNewOccasionBinding!!.tvTime.text.toString().trim { it <= ' ' },
-                    imageUrl)
+                    imageUrl, alarm = true, notification = true
+                )
             }
+        }
+    }
+
+    override fun onDateClick() {
+        showDatePicker()
+    }
+
+    override fun onTimeClick() {
+        TimeSelectionBottomSheetDialogFragment().apply {
+            show(supportFragmentManager, TimeSelectionBottomSheetDialogFragment.TAG)
         }
     }
 
@@ -195,8 +212,8 @@ class NewOccasionActivity : BaseActivity<ActivityNewOccasionBinding, NewOccasion
 
     fun showDatePicker(){
         val picker = PersianDatePickerDialog(this)
-            .setPositiveButtonString("باشه")
-            .setNegativeButton("بیخیال")
+            .setPositiveButtonString("انتخاب")
+//            .setNegativeButton("بیخیال")
             .setTodayButton("امروز")
             .setTodayButtonVisible(true)
             .setMinYear(1300)

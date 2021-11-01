@@ -52,7 +52,6 @@
 
                 <TextView
                     android:id="@+id/cardActivityTitle"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_30sdp"
                     android:layout_alignParentTop="true"
@@ -60,8 +59,9 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:gravity="center"
                     android:text="@string/occasionList"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold"
                     tools:ignore="RtlHardcoded" />
             </RelativeLayout>
         </RelativeLayout>
@@ -78,17 +78,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefresh"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:overScrollMode="never"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rlHeader">
-
         <androidx.core.widget.NestedScrollView
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -101,7 +90,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/rlHeader">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -119,31 +108,24 @@
                     <FrameLayout
                         android:id="@+id/flTabs"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="-30dp"
-                        android:layout_marginEnd="-30dp"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="@dimen/_35sdp"
+                        android:layout_marginVertical="@dimen/_10sdp"
                         android:clipToPadding="false"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <View
-                            android:id="@+id/indicator2"
-                            android:layout_width="0dp"
-                            android:layout_gravity="end"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/gradient_bg_entry"/>
-                        <View
                             android:id="@+id/indicator"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="@dimen/_30sdp"
                             android:background="@drawable/gradient_bg_entry"/>
-
 
                         <com.google.android.material.tabs.TabLayout
                             android:id="@+id/tabs"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_50sdp"
+                            android:layout_height="@dimen/_30sdp"
                             app:tabGravity="fill"
                             app:tabMode="fixed"
                             android:outlineSpotShadowColor="@null"
@@ -162,7 +144,6 @@
                         app:layout_constraintVertical_weight="1"
                         android:layout_marginTop="@dimen/_50sdp"
                         android:elevation="@dimen/_3sdp"
-
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/flTabs"
@@ -170,7 +151,6 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btAdd"

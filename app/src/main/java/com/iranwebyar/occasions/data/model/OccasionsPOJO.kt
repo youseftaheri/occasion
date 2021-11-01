@@ -5,7 +5,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class QuestionsPOJO : Serializable {
+class OccasionsPOJO : Serializable {
     @JvmField
     @Expose
     @SerializedName("status")
@@ -24,20 +24,25 @@ class QuestionsPOJO : Serializable {
     inner class Data : Serializable {
         @JvmField
         @Expose
-        @SerializedName("questions")
-        var questions: List<Question>? = null
+        @SerializedName("occasions")
+        var occasions: List<Occasion>? = null
     }
 
-    class Question : Serializable {
+    class Occasion : Serializable {
         @JvmField
         @Expose
         @SerializedName("id")
-        var id: String? = null
+        var id: Long? = null
 
         @JvmField
         @Expose
-        @SerializedName("text")
-        var text: String? = null
+        @SerializedName("type")
+        var type: String? = null
+
+        @JvmField
+        @Expose
+        @SerializedName("title")
+        var title: String? = null
 
         @JvmField
         @Expose
@@ -46,29 +51,23 @@ class QuestionsPOJO : Serializable {
 
         @JvmField
         @Expose
-        @SerializedName("correctAnswerId")
-        var correctAnswerId: String? = null
+        @SerializedName("date")
+        var date: String? = null
 
         @JvmField
         @Expose
-        @SerializedName("answers")
-        var answers: List<Answer>? = null
-    }
-
-    class Answer : Serializable {
-        @JvmField
-        @Expose
-        @SerializedName("id")
-        var id: String? = null
+        @SerializedName("time")
+        var time: String? = null
 
         @JvmField
         @Expose
-        @SerializedName("text")
-        var text: String? = null
+        @SerializedName("alarm")
+        var alarm: Boolean? = null
 
         @JvmField
         @Expose
-        @SerializedName("image")
-        var image: String? = null
+        @SerializedName("notification")
+        var notification: Boolean? = null
+
     }
 }

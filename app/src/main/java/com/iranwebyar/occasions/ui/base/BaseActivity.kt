@@ -65,8 +65,8 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
     override fun onFragmentDetached(tag: String?) {}
     override fun attachBaseContext(newBase: Context) {
         val context = (newBase.applicationContext as MyApplication)
-            .setLanguage(newBase, "en")
-//            .setLanguage(newBase, "fa")
+//            .setLanguage(newBase, "en")
+            .setLanguage(newBase, "fa")
         super.attachBaseContext(ViewPumpContextWrapper.wrap(context))
         MultiDex.install(this)
         //ACRA.init(this);
@@ -119,6 +119,10 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
             //   mProgressDialog.cancel();
             mProgressDialogg!!.dismiss()
         }
+    }
+
+    fun handleError(exception: String?) {
+        MyToast.show(this, exception, true)
     }
 
     val isNetworkConnected: Boolean

@@ -8,11 +8,15 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.security.ProviderInstaller
 import com.iranwebyar.mellichange.utils.ResourceProvider
+import com.iranwebyar.occasions.utils.Const
 import java.security.KeyManagementException
 import java.security.NoSuchAlgorithmException
 import java.util.*
 import javax.net.ssl.SSLContext
 import dagger.hilt.android.HiltAndroidApp
+import io.github.inflationx.calligraphy3.CalligraphyConfig
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor
+import io.github.inflationx.viewpump.ViewPump
 
 //Main application class
 @HiltAndroidApp
@@ -35,17 +39,17 @@ class MyApplication : Application(){
             e.printStackTrace()
         }
 
-//        ViewPump.init(
-//            ViewPump.builder()
-//            .addInterceptor(
-//                CalligraphyInterceptor(
-//                CalligraphyConfig.Builder()
-//                    .setDefaultFontPath(Const.FONT_FILE)
-//                    .setFontAttrId(R.attr.fontPath)
-//                    .build())
-//            )
-//            .build()
-//        )
+        ViewPump.init(
+            ViewPump.builder()
+            .addInterceptor(
+                CalligraphyInterceptor(
+                CalligraphyConfig.Builder()
+                    .setDefaultFontPath(Const.FONT_FILE)
+                    .setFontAttrId(R.attr.fontPath)
+                    .build())
+            )
+            .build()
+        )
     }
 
     fun setLanguage(context: Context, languageCode: String): Context {

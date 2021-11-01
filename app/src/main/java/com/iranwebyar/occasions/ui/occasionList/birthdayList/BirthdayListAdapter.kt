@@ -1,16 +1,15 @@
 package com.iranwebyar.occasions.ui.occasionList.birthdayList
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.iranwebyar.occasions.data.model.QuestionsPOJO
+import com.iranwebyar.occasions.data.model.OccasionsPOJO
 import com.iranwebyar.occasions.databinding.ItemOccasionViewBinding
 import com.iranwebyar.occasions.ui.base.BaseAdapter
 import com.iranwebyar.occasions.ui.base.BaseViewHolder
 import com.iranwebyar.occasions.ui.occasionList.OccasionListActivity
 
 class BirthdayListAdapter
-constructor(birthdayItemViewModelList: List<QuestionsPOJO.Answer?>?) : BaseAdapter<QuestionsPOJO.Answer?>() {
+constructor(birthdayItemViewModelList: List<OccasionsPOJO.Occasion?>?) : BaseAdapter<OccasionsPOJO.Occasion?>() {
     var publicParent: ViewGroup? = null
 
     override fun onBindViewHolderBase(holder: BaseViewHolder?, position: Int) {
@@ -25,7 +24,7 @@ constructor(birthdayItemViewModelList: List<QuestionsPOJO.Answer?>?) : BaseAdapt
     }
 
     inner class BirthdayViewHolder(var mBinding: ItemOccasionViewBinding) : BaseViewHolder(mBinding.root),
-        BirthdayItemViewModel.AnswersItemViewModelListener {
+        BirthdayItemViewModel.BirthdayItemViewModelListener {
         private var birthdayItemViewModel: BirthdayItemViewModel? = null
         override fun onBind(position: Int) {
             val session = dataList!![position]!!

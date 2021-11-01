@@ -6,5 +6,5 @@ interface DbHelper {
     suspend fun deleteAll()
     suspend fun allOccasions(): List<Occasion>?
     suspend fun insertOccasion(occasion: Occasion?)
-    suspend fun findOccasionById(id: String?)
+    suspend fun findOccasionById(id: Long?)
 }

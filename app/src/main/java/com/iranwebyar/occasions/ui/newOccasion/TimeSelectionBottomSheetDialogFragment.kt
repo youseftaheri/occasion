@@ -22,7 +22,7 @@ import java.util.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class DateSelectionBottomSheetDialogFragment  : BottomSheetDialogFragment() {
+class TimeSelectionBottomSheetDialogFragment  : BottomSheetDialogFragment() {
 
     companion object {
         const val TAG = "CustomBottomSheetDialogFragment"
@@ -43,18 +43,13 @@ class DateSelectionBottomSheetDialogFragment  : BottomSheetDialogFragment() {
     @SuppressLint("SimpleDateFormat")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val dateData: MutableList<String> = ArrayList()
         val hourData: MutableList<String> = ArrayList()
         val minuteData: MutableList<String> = ArrayList()
-        var mDate: String
         var mHour = "00"
         var mMinute = "00"
         var hour: String
         var minute: String
 
-        val sdf = SimpleDateFormat("yyyy/MM/dd")
-
-//        val endDate = Calendar.getInstance().time
         val endDate = getDaysAgo(-2)
         val startDate = getDaysAgo(30)
 
@@ -113,7 +108,6 @@ class DateSelectionBottomSheetDialogFragment  : BottomSheetDialogFragment() {
 
         return calendar.time
     }
-    var swipeEnabled = true
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog

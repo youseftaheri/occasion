@@ -1,8 +1,8 @@
 package com.iranwebyar.occasions.data.local.prefs
 
-import com.iranwebyar.occasions.data.model.QuestionsPOJO
+import com.iranwebyar.occasions.data.model.OccasionsPOJO
 
 interface PreferencesHelper {
     fun clear()
-    var questionsData: QuestionsPOJO.Data?
+    var occasionsList: List<OccasionsPOJO.Occasion?>
 }

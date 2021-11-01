@@ -2,118 +2,46 @@ package com.iranwebyar.occasions.data
 
 class FakeQuestions {
     var data = """
-           {"questions": [
+           {"occasions": [
              {
                "id": "1",
-               "text": "question1",
+               "type": "تولد",
+               "title": "birth1",
                "image": "https",
-               "correctAnswerId": "2",
-               "answers": [
-               {
-                   "id": "1",
-                   "text": "answer1",
-                   "image": "https"
-               },
-               {
-                   "id": "2",
-                   "text": "answer2",
-                   "image": "https"
-               },
-               {
-                   "id": "3",
-                   "text": "answer3",
-                   "image": "https"
-               },
-               {
-                   "id": "4",
-                   "text": "answer4",
-                   "image": "https"
-               }
-               ]
+               "date": "15/10/1551",
+               "time": "23:15",
+               "alarm": true,
+               "notification": true
              },
              {
                "id": "2",
-               "text": "question2",
+               "type": "متفرقه",
+               "title": "birth2",
                "image": "https",
-               "correctAnswerId": "3",
-               "answers": [
-               {
-                   "id": "1",
-                   "text": "answer1",
-                   "image": "https"
-               },
-               {
-                   "id": "2",
-                   "text": "answer2",
-                   "image": "https"
-               },
-               {
-                   "id": "3",
-                   "text": "answer3",
-                   "image": "https"
-               },
-               {
-                   "id": "4",
-                   "text": "answer4",
-                   "image": "https"
-               }
-               ]
+               "date": "15/10/1551",
+               "time": "23:15",
+               "alarm": true,
+               "notification": true
              },
              {
                "id": "3",
-               "text": "question3",
+               "type": "تولد",
+               "title": "birth3",
                "image": "https",
-               "correctAnswerId": "4",
-               "answers": [
-               {
-                   "id": "1",
-                   "text": "answer1",
-                   "image": "https"
-               },
-               {
-                   "id": "2",
-                   "text": "answer2",
-                   "image": "https"
-               },
-               {
-                   "id": "3",
-                   "text": "answer3",
-                   "image": "https"
-               },
-               {
-                   "id": "4",
-                   "text": "answer4",
-                   "image": "https"
-               }
-               ]
+               "date": "15/10/1551",
+               "time": "23:15",
+               "alarm": true,
+               "notification": true
              },
              {
                "id": "4",
-               "text": "question4",
+               "type": "متفرقه",
+               "title": "others1",
                "image": "https",
-               "correctAnswerId": "1",
-               "answers": [
-               {
-                   "id": "1",
-                   "text": "answer1",
-                   "image": "https"
-               },
-               {
-                   "id": "2",
-                   "text": "answer2",
-                   "image": "https"
-               },
-               {
-                   "id": "3",
-                   "text": "answer3",
-                   "image": "https"
-               },
-               {
-                   "id": "4",
-                   "text": "answer4",
-                   "image": "https"
-               }
-               ]
+               "date": "15/10/1551",
+               "time": "23:15",
+               "alarm": true,
+               "notification": true
              }
             ]
            }

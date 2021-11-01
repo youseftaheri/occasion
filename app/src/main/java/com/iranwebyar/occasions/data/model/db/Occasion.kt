@@ -5,17 +5,15 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "occasions")
 class Occasion {
+//    @PrimaryKey
+//    var occasionId: Long? = 0
     @PrimaryKey
-    var resId: Long? = 0
-    var id: String? = "-"
-    var name: String? = "-"
-    var address: String? = "-"
-    var crossStreet: String? = "-"
-    var lat: Double? = 0.0
-    var lng: Double? = 0.0
-    var distance: Double? = 0.0
-    var postalCode: String? = "-"
-    var country: String? = "-"
-    var state: String? = "-"
-    var city: String? = "-"
+    var id: Long? = 0
+    var type: String? = "-"
+    var title: String? = "-"
+    var image: String? = "-"
+    var date: String? = "-"
+    var time: String? = "-"
+    var alarm: Boolean? = true
+    var notification: Boolean? = true
 }

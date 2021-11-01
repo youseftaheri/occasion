@@ -38,6 +38,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
+
                 <ImageView
                     android:id="@+id/ivBack"
                     android:layout_width="@dimen/_25sdp"
@@ -46,11 +47,10 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
                     android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="4dp"
                     android:contentDescription="@string/app_name"
                     android:onClick="@{() -> viewModel.back()}"
-                    android:rotation="180"
                     android:scaleY="0.5"
                     app:srcCompat="@drawable/ic_baseline_navigate_next_24" />
 
@@ -235,6 +235,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <LinearLayout
+                            android:id="@+id/llDate"
                             style="@style/formOuterLinearLayout"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_gravity="start|center_vertical">
@@ -243,22 +244,22 @@
 <!--                            app:drawableTint="@color/colorGray"-->
                             <TextView
                                 android:id="@+id/tvDate"
+                                android:onClick="@{() -> viewModel.onDateClick()}"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_gravity="start|center_vertical"
-                                android:gravity="start"
+                                android:layout_gravity="right|center_vertical"
+                                android:gravity="right"
                                 android:layout_marginVertical="@dimen/_5sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:text="@string/occasionRegistration"
-                                android:textColor="@color/white"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:textColor="@color/black"
                                 android:textStyle="bold"
                                 tools:ignore="RtlHardcoded"
                                 android:drawablePadding="8dp"
                                 android:layoutDirection="ltr"
-                                android:textAlignment="viewStart"
                                 android:hint="@string/occasion_date"
+                                android:textColorHint="@color/colorGrayDark"
                                 android:inputType="number|numberDecimal"
                                 android:singleLine="true"
                                 android:maxLength="13"
@@ -279,27 +280,28 @@
                             android:layout_marginBottom="@dimen/_5sdp"/>
 
                         <LinearLayout
+                            android:id="@+id/llTime"
                             style="@style/formOuterLinearLayout"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_gravity="start|center_vertical">
                             <TextView
                                 android:id="@+id/tvTime"
+                                android:onClick="@{() -> viewModel.onTimeClick()}"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_gravity="start|center_vertical"
-                                android:gravity="start"
+                                android:layout_gravity="right|center_vertical"
+                                android:gravity="right"
                                 android:layout_marginVertical="@dimen/_5sdp"
                                 android:layout_marginTop="@dimen/_10sdp"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:text="@string/occasionRegistration"
-                                android:textColor="@color/white"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:textColor="@color/black"
                                 android:textStyle="bold"
                                 tools:ignore="RtlHardcoded"
                                 android:drawablePadding="8dp"
                                 android:layoutDirection="ltr"
-                                android:textAlignment="viewStart"
-                                android:hint="@string/occasion_date"
+                                android:hint="@string/occasion_time"
+                                android:textColorHint="@color/colorGrayDark"
                                 android:inputType="number|numberDecimal"
                                 android:singleLine="true"
                                 android:maxLength="13"

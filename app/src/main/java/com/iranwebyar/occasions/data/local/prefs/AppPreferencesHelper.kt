@@ -2,9 +2,10 @@ package com.iranwebyar.occasions.data.local.prefs
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.iranwebyar.occasions.data.model.QuestionsPOJO
+import com.iranwebyar.occasions.data.model.OccasionsPOJO
 import com.iranwebyar.occasions.di.PreferenceInfo
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import javax.inject.Inject
 
 class AppPreferencesHelper @Inject constructor(
@@ -19,7 +20,7 @@ class AppPreferencesHelper @Inject constructor(
         private const val MAIN_BASE = "http://selimi.ir/portal/"
         var BASE_URL = MAIN_BASE + "api-v1/"
         var IMAGE_BASE = "http://.../portal/assets/profile-picture/"
-        private const val QUESTIONS_DATA = "QUESTIONS_DATA"
+        private const val OCCASION_LIST = "OCCASION_LIST"
 
 
     }
@@ -32,16 +33,27 @@ class AppPreferencesHelper @Inject constructor(
         mPrefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
     }
 
-    //<------------------------------------------------------------------------------->\\
-    //Store & retrieve questionsData
     //<-------------------------------------------------------------------------------->\\
-    override var questionsData: QuestionsPOJO.Data?
-        get() = Gson().fromJson(mPrefs.getString(QUESTIONS_DATA, null), QuestionsPOJO.Data::class.java)
-        set(data) {
-            mPrefs.edit().putString(QUESTIONS_DATA, Gson().toJson(data)).apply()
+    // Save and retrieve cities list
+    //<-------------------------------------------------------------------------------->\\
+    override var occasionsList: List<OccasionsPOJO.Occasion?>
+        get() {
+            var dataList: List<OccasionsPOJO.Occasion> = ArrayList()
+            val strJson: String = mPrefs.getString(OCCASION_LIST, null) ?: return dataList
+            val gson = Gson()
+            dataList = gson.fromJson(strJson, object : TypeToken<List<OccasionsPOJO.Occasion>?>() {}.type)
+            return dataList
         }
-//    override var questionsData: QuestionsPOJO.Data?
-//        get() = Gson().fromJson(mPrefs.getString(QUESTIONS_DATA, null), QuestionsPOJO.Data::class.java)
+        //Gson().fromJson(mPrefs.getString(MY_CITIES, null), List<MainHomeFragPOJO.City>::class.java)
+        set(data) {
+            mPrefs.edit().putString(OCCASION_LIST, Gson().toJson(data)).apply()
+        }
+
+//    //<------------------------------------------------------------------------------->\\
+//    //Store & retrieve questionsData
+//    //<-------------------------------------------------------------------------------->\\
+//    override var occasionsData: List<OccasionsPOJO.Data?
+//        get() = Gson().fromJson(mPrefs.getString(QUESTIONS_DATA, null), OccasionsPOJO.Data::class.java)
 //        set(data) {
 //            mPrefs.edit().putString(QUESTIONS_DATA, Gson().toJson(data)).apply()
 //        }

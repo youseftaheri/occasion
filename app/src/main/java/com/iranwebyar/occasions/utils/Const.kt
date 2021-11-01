@@ -17,13 +17,9 @@ object Const {
     var WEBSITE_RULES_URL = MAIN_BASE + "register/rulls/"
     var PAYMENT_URL = MAIN_BASE + "api/v1/"
     var BASE_URL = MAIN_BASE + "api/version/"
-    //    var IMAGE_BASE = "https://www.iranwebyar.com/portal/assets/frofile-picture/"
-//    var TERMS_AND_CONDITIONS = MAIN_BASE + "homes/..."
-    var FAQ = MAIN_BASE + "homes/..."
-    var ABOUT_US = MAIN_BASE + "homes/..."
-    var FIREBASE_TOKEN = "firebase_token_sdhDFGjhkjrg7bv"
-    var NESHAN_API_KEY = "service.jES99WpbUhGehZ1WWzya36AgOKyKN4l7JehTaG45"
-    //    val APP_KEY = "11111"
+    const val DB_NAME = "sample_occasion_database.db"
+
+
 
 
 

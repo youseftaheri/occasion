@@ -4,7 +4,7 @@ import com.iranwebyar.occasions.data.model.db.Occasion
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
+//@Singleton
 class AppDbHelper @Inject constructor(private val mAppDatabase: AppDatabase) : DbHelper {
 
     override suspend fun deleteAll() {
@@ -19,7 +19,7 @@ class AppDbHelper @Inject constructor(private val mAppDatabase: AppDatabase) : D
         mAppDatabase.occasionDao()!!.insert(occasion)
     }
 
-    override suspend fun findOccasionById(id: String?) {
+    override suspend fun findOccasionById(id: Long?) {
         mAppDatabase.occasionDao()!!.findById(id)
     }
 }
