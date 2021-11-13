@@ -33,6 +33,12 @@ class AppDataManager
             mPreferencesHelper.occasionsList = data
         }
 
+    override var selectedOccasion: OccasionsPOJO.Occasion?
+        get() = mPreferencesHelper.selectedOccasion
+        set(data) {
+            mPreferencesHelper.selectedOccasion = data
+        }
+
     override suspend fun deleteAll() {
         mDbHelper.deleteAll()
     }
@@ -45,8 +51,20 @@ class AppDataManager
         mDbHelper.insertOccasion(occasion)
     }
 
-    override suspend fun findOccasionById(id: Long?) {
-        mDbHelper.findOccasionById(id)
+    override suspend fun editOccasion(occasion: Occasion?) {
+        mDbHelper.editOccasion(occasion)
+    }
+
+    override suspend fun deleteOccasionById(id: Long?) {
+        mDbHelper.deleteOccasionById(id)
+    }
+
+    override suspend fun delete(occasion: Occasion?) {
+        mDbHelper.delete(occasion)
+    }
+
+    override suspend fun findOccasionById(id: Long?): Occasion? {
+        return mDbHelper.findOccasionById(id)
     }
 
 }

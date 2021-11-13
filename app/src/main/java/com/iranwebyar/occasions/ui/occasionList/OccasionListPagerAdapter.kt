@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.iranwebyar.occasions.R
 import com.iranwebyar.occasions.ui.occasionList.birthdayList.BirthdayListFragment
+import com.iranwebyar.occasions.ui.occasionList.otherList.OtherListFragment
+import com.iranwebyar.occasions.ui.occasionList.personalList.PersonalListFragment
 import java.util.*
 
 @SuppressLint("WrongConstant")
@@ -23,8 +25,8 @@ class OccasionListPagerAdapter
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> BirthdayListFragment.newInstance()
-            1 -> BirthdayListFragment.newInstance()
+            0 -> OtherListFragment.newInstance()
+            1 -> PersonalListFragment.newInstance()
             2 -> BirthdayListFragment.newInstance()
             else -> null
         }!!

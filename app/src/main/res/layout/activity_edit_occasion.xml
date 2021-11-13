@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.newCard.NewCardActivity"
+    tools:ignore="MissingPrefix,UnusedAttribute">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.iranwebyar.occasions.ui.editOccasion.EditOccasionViewModel" />
+
+        <variable
+            name="item"
+            type="com.iranwebyar.occasions.utils.Item"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/back5"
+        android:layoutDirection="locale">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <RelativeLayout
+                android:id="@+id/rlHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:elevation="@dimen/_5sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivBack"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="4dp"
+                    android:contentDescription="@string/app_name"
+                    android:onClick="@{() -> viewModel.back()}"
+                    android:scaleY="0.5"
+                    app:srcCompat="@drawable/ic_baseline_navigate_next_24" />
+
+                <RelativeLayout
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:text="@string/editOccasion"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13sdp"
+                        android:textStyle="bold"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/colorGray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clTitle"
+            app:layout_constraintVertical_weight="1">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clPersonalInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="@dimen/_2sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    app:cardCornerRadius="@dimen/_50sdp"
+                    android:background="@drawable/rectangle_white_transparent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintVertical_weight="1"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/back3"
+                        android:alpha="0.3"
+                        app:layout_constraintTop_toTopOf="@+id/llLoginForm"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/llLoginForm"
+                        app:layout_constraintEnd_toEndOf="@+id/llLoginForm"/>
+
+                    <LinearLayout
+                        android:id="@+id/llLoginForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_15sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <LinearLayout
+                            android:id="@+id/llPicture"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_8sdp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvPicture"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:text="@string/add_ticket_image"
+                                android:textColor="@color/colorGrayDark"
+                                android:textSize="@dimen/_10sdp" />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_100sdp"
+                                android:onClick="@{() -> viewModel.pictureClick()}"
+                                android:background="@drawable/custom_gray_bg_with_border"
+                                app:cardCornerRadius="@dimen/_8sdp"
+                                app:cardElevation="0dp">
+
+                                <ImageView
+                                    android:id="@+id/ivPicture"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/ic_cam_gray"
+                                    android:contentDescription="@string/app_name" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/formOuterLinearLayout"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_gravity="start|center_vertical">
+                            <Spinner
+                                android:id="@+id/spinnerOccasion"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_gravity="start|center_vertical"
+                                android:gravity="start"
+                                android:entries="@array/occasion_type"
+                                android:onItemSelected="@{() -> viewModel.onSelectOccasion()}"
+                                android:layout_marginVertical="@dimen/_5sdp" />
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:drawablePadding="@dimen/_8sdp"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:contentDescription="@string/app_name"
+                                app:tint="@color/colorGray"
+                                android:src="@drawable/ic_baseline_category_24" />
+                        </LinearLayout>
+
+                        <View style="@style/spinnerLineViewPrimaryColor"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_12sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"/>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layoutDirection="locale"
+                            android:textAlignment="viewStart"
+                            android:theme="@style/PrimaryInputBox">
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:id="@+id/etTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_baseline_subject_24"
+                                android:drawableTint="@color/colorGray"
+                                android:drawablePadding="8dp"
+                                android:layoutDirection="ltr"
+                                android:textAlignment="viewStart"
+                                android:gravity="start"
+                                android:hint="@string/occasion_title"
+                                android:singleLine="true"
+                                android:maxLength="50"
+                                android:textSize="@dimen/_10sdp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llDate"
+                            style="@style/formOuterLinearLayout"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_gravity="start|center_vertical">
+
+<!--                            app:drawableStartCompat="@drawable/ic_baseline_date_range_24"-->
+<!--                            app:drawableTint="@color/colorGray"-->
+                            <TextView
+                                android:id="@+id/tvDate"
+                                android:onClick="@{() -> viewModel.onDateClick()}"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_gravity="right|center_vertical"
+                                android:gravity="right"
+                                android:layout_marginVertical="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                tools:ignore="RtlHardcoded"
+                                android:drawablePadding="8dp"
+                                android:layoutDirection="ltr"
+                                android:hint="@string/occasion_date"
+                                android:textColorHint="@color/colorGrayDark"
+                                android:inputType="number|numberDecimal"
+                                android:singleLine="true"
+                                android:maxLength="13"
+                                android:textSize="@dimen/_10sdp"/>
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:drawablePadding="@dimen/_8sdp"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:contentDescription="@string/app_name"
+                                app:tint="@color/colorGray"
+                                android:src="@drawable/ic_baseline_date_range_24" />
+                        </LinearLayout>
+
+                        <View style="@style/spinnerLineViewPrimaryColor"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_12sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"/>
+
+                        <LinearLayout
+                            android:id="@+id/llTime"
+                            style="@style/formOuterLinearLayout"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_gravity="start|center_vertical">
+                            <TextView
+                                android:id="@+id/tvTime"
+                                android:onClick="@{() -> viewModel.onTimeClick()}"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_gravity="right|center_vertical"
+                                android:gravity="right"
+                                android:layout_marginVertical="@dimen/_5sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                tools:ignore="RtlHardcoded"
+                                android:drawablePadding="8dp"
+                                android:layoutDirection="ltr"
+                                android:hint="@string/occasion_time"
+                                android:textColorHint="@color/colorGrayDark"
+                                android:inputType="number|numberDecimal"
+                                android:singleLine="true"
+                                android:maxLength="13"
+                                android:textSize="@dimen/_10sdp"/>
+                            <ImageView
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:drawablePadding="@dimen/_8sdp"
+                                android:layout_margin="@dimen/_2sdp"
+                                android:contentDescription="@string/app_name"
+                                app:tint="@color/colorGray"
+                                android:src="@drawable/ic_baseline_av_timer_24" />
+                        </LinearLayout>
+
+                        <View style="@style/spinnerLineViewPrimaryColor"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_marginEnd="@dimen/_12sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"/>
+
+<!--                        <com.google.android.material.textfield.TextInputLayout-->
+<!--                            android:id="@+id/tilDate"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_10sdp"-->
+<!--                            android:layout_marginEnd="@dimen/_10sdp"-->
+<!--                            android:layoutDirection="locale"-->
+<!--                            android:textAlignment="viewStart"-->
+<!--                            android:theme="@style/PrimaryInputBox">-->
+
+<!--                            <androidx.appcompat.widget.AppCompatEditText-->
+<!--                                android:id="@+id/etDate"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:drawableStart="@drawable/ic_baseline_date_range_24"-->
+<!--                                android:drawableTint="@color/colorGray"-->
+<!--                                android:drawablePadding="8dp"-->
+<!--                                android:layoutDirection="ltr"-->
+<!--                                android:textAlignment="viewStart"-->
+<!--                                android:gravity="start"-->
+<!--                                android:hint="@string/occasion_date"-->
+<!--                                android:inputType="number|numberDecimal"-->
+<!--                                android:singleLine="true"-->
+<!--                                android:maxLength="13"-->
+<!--                                android:textSize="@dimen/_10sdp" />-->
+<!--                        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+<!--                        <com.google.android.material.textfield.TextInputLayout-->
+<!--                            android:id="@+id/tilTime"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="@dimen/_10sdp"-->
+<!--                            android:layout_marginEnd="@dimen/_10sdp"-->
+<!--                            android:layoutDirection="locale"-->
+<!--                            android:textAlignment="viewStart"-->
+<!--                            android:theme="@style/PrimaryInputBox">-->
+
+<!--                            <androidx.appcompat.widget.AppCompatEditText-->
+<!--                                android:id="@+id/etTime"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:drawableStart="@drawable/ic_baseline_av_timer_24"-->
+<!--                                android:drawableTint="@color/colorGray"-->
+<!--                                android:drawablePadding="8dp"-->
+<!--                                android:layoutDirection="ltr"-->
+<!--                                android:textAlignment="viewStart"-->
+<!--                                android:gravity="start"-->
+<!--                                android:hint="@string/occasion_time"-->
+<!--                                android:inputType="number|numberDecimal"-->
+<!--                                android:singleLine="true"-->
+<!--                                android:maxLength="20"-->
+<!--                                android:textSize="@dimen/_10sdp" />-->
+<!--                        </com.google.android.material.textfield.TextInputLayout>-->
+
+
+                        <Button
+                            android:id="@+id/btRegisterCard"
+                            style="@style/submitButton"
+                            android:onClick="@{() -> viewModel.onSubmitClick()}"
+                            android:text="@string/register"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"/>
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

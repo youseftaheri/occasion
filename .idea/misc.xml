@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.13148148148148148" />
+        <entry key="app/src/main/res/drawable-v24/ic_notifications_smallicon.xml" value="0.24351851851851852" />
+        <entry key="app/src/main/res/drawable/blur_gradient_bg.xml" value="0.25462962962962965" />
         <entry key="app/src/main/res/drawable/custom_dialog_bg.xml" value="0.287962962962963" />
         <entry key="app/src/main/res/drawable/custom_gray_bg_with_border.xml" value="0.20104166666666667" />
         <entry key="app/src/main/res/drawable/custom_progress_bg.xml" value="0.1" />
@@ -13,10 +15,12 @@
         <entry key="app/src/main/res/drawable/gradient_transparent_back.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/gradient_transparent_gray_button_back.xml" value="0.33611111111111114" />
         <entry key="app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.20277777777777778" />
+        <entry key="app/src/main/res/drawable/ic_notifications_smallicon.xml" value="0.24351851851851852" />
         <entry key="app/src/main/res/drawable/rectangle_white_transparent.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/toast_border.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_birthday_list.xml" value="0.32653985507246375" />
         <entry key="app/src/main/res/layout/activity_card_list.xml" value="0.17299898682877407" />
+        <entry key="app/src/main/res/layout/activity_edit_occasion.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout/activity_entry.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_image_picker.xml" value="0.32653985507246375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
@@ -30,10 +34,14 @@
         <entry key="app/src/main/res/layout/dialog_image_picker.xml" value="0.32653985507246375" />
         <entry key="app/src/main/res/layout/fragment_birthday_list.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/fragment_entry_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_other_list.xml" value="0.3260416666666667" />
+        <entry key="app/src/main/res/layout/fragment_personal_list.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/layout/fragment_question.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_time_selection_bottom_sheet_dialog.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/layout/item_answer_view.xml" value="0.1661600810536981" />
-        <entry key="app/src/main/res/layout/item_occasion_view.xml" value="0.32653985507246375" />
+        <entry key="app/src/main/res/layout/item_occasion_view.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_other_view.xml" value="0.3416666666666667" />
+        <entry key="app/src/main/res/layout/item_personal_view.xml" value="0.3416666666666667" />
         <entry key="app/src/main/res/layout/progress_spinner.xml" value="0.1" />
         <entry key="app/src/main/res/layout/score_allert.xml" value="0.18840579710144928" />
         <entry key="app/src/main/res/layout/simple_allert.xml" value="0.32653985507246375" />

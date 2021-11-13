@@ -11,11 +11,17 @@ interface OccasionDao {
     @Delete
     suspend fun delete(occasion: Occasion?)
 
+    @Query("DELETE FROM occasions WHERE id = (:id) ")
+    suspend fun deleteOccasionById(id: Long?)
+
     @Query("SELECT * FROM occasions WHERE id LIKE :id LIMIT 1")
     suspend fun findById(id: Long?): Occasion?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(occasion: Occasion?)
+
+    @Update
+    suspend fun edit(occasion: Occasion?)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(occasions: List<Occasion?>?)

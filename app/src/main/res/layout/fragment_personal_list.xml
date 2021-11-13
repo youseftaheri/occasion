@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.cardList.CardListActivity"
+    tools:ignore="MissingPrefix,UnusedAttribute">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.iranwebyar.occasions.ui.occasionList.personalList.PersonalListViewModel" />
+        <variable
+            name="itemViewModel"
+            type="com.iranwebyar.occasions.ui.occasionList.personalList.PersonalItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="locale">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:elevation="@dimen/_2sdp"
+            android:layout_width="0dp"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintHorizontal_weight="1"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+<!--                app:personalListAdapter="@{viewModel.cardListItemsLiveData}"-->
+<!--                tools:listitem="@layout/item_occasion_view"-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layoutAnimation="@anim/layout_animation_fall_down"
+                    android:overScrollMode="never"
+                    android:visibility="visible"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_50sdp"
+                    android:elevation="@dimen/_4sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+        <TextView
+            android:id="@+id/tvEmpty"
+            android:fontFamily="@font/bold"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/personal_plan_list_empty"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/_13sdp"
+            android:visibility="@{viewModel.emptyMessageVisibility, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

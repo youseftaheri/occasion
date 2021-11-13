@@ -5,7 +5,7 @@
         <item>متفرقه</item>
     </string-array>
 
-    <string name="app_name">Occasion</string>
+    <string name="app_name">یادآور</string>
     <string name="birthday">تولد</string>
     <string name="personalPlan">شخصی</string>
     <string name="others">متفرقه</string>
@@ -47,6 +47,10 @@
     <string name="hour">ساعت</string>
     <string name="minute">دقیقه</string>
     <string name="selectTime">انتخاب زمان</string>
+    <string name="remainedTime">زمان باقیمانده:</string>
+    <string name="personal">شخصی</string>
+    <string name="editOccasion">ویرایش مناسبت</string>
+    <string name="reminder_notification_channel_id" translatable="false">reminder_channel</string>
 
 
 </resources>

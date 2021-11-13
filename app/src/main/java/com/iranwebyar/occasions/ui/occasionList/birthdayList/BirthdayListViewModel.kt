@@ -21,45 +21,42 @@ class BirthdayListViewModel
 @Inject
 constructor(dataManager: DataManager?, schedulerProvider: SchedulerProvider?) : BaseViewModel<BirthdayListNavigator?>(dataManager!!, schedulerProvider!!) {
 
-    val cardListItemsLiveData: MutableLiveData<List<OccasionsPOJO.Occasion?>> = MutableLiveData()
+    private val cardListItemsLiveData: MutableLiveData<List<OccasionsPOJO.Occasion?>> = MutableLiveData()
 
     @JvmField
     val emptyMessageVisibility: ObservableField<Boolean> = ObservableField(false)
 
     init {
-//        cardListItemsLiveData.value = emptyList()
-//        emptyMessageVisibility.set(cardListItemsLiveData.value!!.isEmpty())
-        fetchData
+//        fetchData
     }
 
-    private val fetchData: Unit
+    val fetchData: Unit
         get() {
             viewModelScope.launch (Dispatchers.Main) { // launches coroutine in main thread
                 try {
-//                    dataManager.deleteAll()
-                    val fakeOccasions = Gson().fromJson(FakeQuestions().data, OccasionsPOJO.Data::class.java)
-                    if (fakeOccasions != null){
-                        var occasion : Occasion
-                        for (i in fakeOccasions.occasions!!.indices) {
-                            occasion = Occasion()
-                            occasion.id = fakeOccasions.occasions!![i].id
-//                            occasion.occasionId = fakeOccasions.occasions!![i].id!!.toLong()
-                            occasion.type = fakeOccasions.occasions!![i].type
-                            occasion.title = fakeOccasions.occasions!![i].title
-                            occasion.image = fakeOccasions.occasions!![i].image
-                            occasion.date = fakeOccasions.occasions!![i].date
-                            occasion.time = fakeOccasions.occasions!![i].time
-                            occasion.alarm = fakeOccasions.occasions!![i].alarm
-                            occasion.notification = fakeOccasions.occasions!![i].notification
-                            dataManager.insertOccasion(occasion)
-                        }
-                    }
+//                    val fakeOccasions = Gson().fromJson(FakeQuestions().data, OccasionsPOJO.Data::class.java)
+//                    if (fakeOccasions != null){
+//                        var occasion : Occasion
+//                        for (i in fakeOccasions.occasions!!.indices) {
+//                            occasion = Occasion(
+//                                fakeOccasions.occasions!![i].id!!,
+//                            )
+//                            occasion.type = fakeOccasions.occasions!![i].type
+//                            occasion.title = fakeOccasions.occasions!![i].title
+//                            occasion.image = fakeOccasions.occasions!![i].image
+//                            occasion.date = fakeOccasions.occasions!![i].date
+//                            occasion.time = fakeOccasions.occasions!![i].time
+//                            occasion.alarm = fakeOccasions.occasions!![i].alarm
+//                            occasion.notification = fakeOccasions.occasions!![i].notification
+//                            dataManager.insertOccasion(occasion)
+//                        }
+//                    }
 
                     val occasions: MutableList<OccasionsPOJO.Occasion> = ArrayList()
                     val ss = dataManager.allOccasions()
                     for (dbOccasion in ss!!){
                         if(dbOccasion.type == "تولد") {
-                            var occasion = OccasionsPOJO.Occasion()
+                            val occasion = OccasionsPOJO.Occasion()
                             occasion.id = dbOccasion.id
                             occasion.type = dbOccasion.type
                             occasion.title = dbOccasion.title
@@ -74,63 +71,58 @@ constructor(dataManager: DataManager?, schedulerProvider: SchedulerProvider?) : 
 
                     dataManager.occasionsList = occasions
 
-
                     cardListItemsLiveData.value = dataManager.occasionsList
                     emptyMessageVisibility.set(cardListItemsLiveData.value!!.isEmpty())
+                    navigator!!.setCards()
                 } catch (e: Exception) {
                     navigator!!.hideLoading()
                     navigator!!.handleError(e.message)
                 }
             }
-
-//            cardListItemsLiveData.value = dataManager.occasionsList
-//            emptyMessageVisibility.set(cardListItemsLiveData.value!!.isEmpty())
-
-//            viewModelScope.launch (Dispatchers.Main) { // launches coroutine in main thread
-//                try {
-//                    val fakeOccasions = Gson().fromJson(FakeQuestions().data, OccasionsPOJO.Data::class.java)
-//                    if (fakeOccasions != null){
-//                        for (i in fakeOccasions.occasions!!.indices) {
-//                            val occasion = Occasion()
-////                            occasion.id = fakeOccasions.occasions!![i].id
-////                            occasion.occasionId = fakeOccasions.occasions!![i].id!!.toLong()
-//                            occasion.type = fakeOccasions.occasions!![i].type
-//                            occasion.title = fakeOccasions.occasions!![i].title
-//                            occasion.image = fakeOccasions.occasions!![i].image
-//                            occasion.date = fakeOccasions.occasions!![i].date
-//                            occasion.time = fakeOccasions.occasions!![i].time
-//                            occasion.alarm = fakeOccasions.occasions!![i].alarm
-//                            occasion.notification = fakeOccasions.occasions!![i].notification
-//                            dataManager.insertOccasion(occasion)
-//                        }
-//                    }
-//
-//                    val occasions: MutableList<OccasionsPOJO.Occasion> = ArrayList()
-//                    val ss = dataManager.allOccasions()
-//                    for (dbOccasion in ss!!){
-//                        if(dbOccasion.type == "birthday") {
-//                            var occasion = OccasionsPOJO.Occasion()
-//                            occasion.id = dbOccasion.id
-//                            occasion.type = dbOccasion.type
-//                            occasion.title = dbOccasion.title
-//                            occasion.image = dbOccasion.image
-//                            occasion.date = dbOccasion.date
-//                            occasion.time = dbOccasion.time
-//                            occasion.alarm = dbOccasion.alarm
-//                            occasion.notification = dbOccasion.notification
-//                            occasions.add(occasion)
-//                        }
-//                    }
-//                    print(occasions)
-//                    cardListItemsLiveData.value = occasions
-//                    emptyMessageVisibility.set(cardListItemsLiveData.value!!.isEmpty())
-////                    navigator!!.setCards()
-//                } catch (e: Exception) {
-//                    navigator!!.hideLoading()
-//                    navigator!!.handleError(e.message)
-//                }
-//            }
         }
+
+    fun cancelAlarm(cardId: Long) {
+        viewModelScope.launch(Dispatchers.Main) { // launches coroutine in main thread
+            try {
+                navigator!!.cancelAlarm(dataManager.findOccasionById(cardId))
+                deleteCard(cardId)
+            } catch (e: Exception) {
+                navigator!!.hideLoading()
+                navigator!!.handleError(e.message)
+            }
+        }
+    }
+
+    fun deleteCard(cardId: Long){
+        viewModelScope.launch (Dispatchers.Main) { // launches coroutine in main thread
+            try {
+                dataManager.deleteOccasionById(cardId)
+                val occasions: MutableList<OccasionsPOJO.Occasion> = ArrayList()
+                val ss = dataManager.allOccasions()
+                for (dbOccasion in ss!!){
+                    if(dbOccasion.id != cardId && dbOccasion.type == "تولد") {
+                        val occasion = OccasionsPOJO.Occasion()
+                        occasion.id = dbOccasion.id
+                        occasion.type = dbOccasion.type
+                        occasion.title = dbOccasion.title
+                        occasion.image = dbOccasion.image
+                        occasion.date = dbOccasion.date
+                        occasion.time = dbOccasion.time
+                        occasion.alarm = dbOccasion.alarm
+                        occasion.notification = dbOccasion.notification
+                        occasions.add(occasion)
+                    }
+                }
+
+                dataManager.occasionsList = occasions
+                cardListItemsLiveData.value = dataManager.occasionsList
+                navigator!!.successfulOccasionDelete()
+            } catch (e: Exception) {
+                navigator!!.hideLoading()
+                navigator!!.handleError(e.message)
+            }
+        }
+    }
 
     fun getCardItemsLiveData(): LiveData<List<OccasionsPOJO.Occasion?>> {
         return cardListItemsLiveData

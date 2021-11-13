@@ -1,7 +1,6 @@
 package com.iranwebyar.occasions.ui.newOccasion
 
 import android.Manifest
-import android.R.attr
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
@@ -16,9 +15,6 @@ import com.iranwebyar.occasions.databinding.ActivityNewOccasionBinding
 import com.iranwebyar.occasions.ui.base.BaseActivity
 import com.iranwebyar.occasions.ui.imagePicker.ImagePickerActivity
 import com.iranwebyar.occasions.ui.occasionList.OccasionListActivity
-import com.iranwebyar.occasions.utils.CommonUtils
-import com.iranwebyar.occasions.utils.FilePath
-import com.iranwebyar.occasions.utils.MyImagePicker
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -37,12 +33,13 @@ import ir.hamsaa.persiandatepicker.PersianDatePickerDialog
 
 import android.R.attr.typeface
 import android.annotation.SuppressLint
+import android.app.AlarmManager
 import android.content.ContentValues.TAG
 import android.graphics.Color
 import android.util.Log
-import com.iranwebyar.occasions.utils.MyToast
+import com.iranwebyar.occasions.data.model.db.Occasion
+import com.iranwebyar.occasions.utils.*
 import org.jetbrains.annotations.NotNull
-
 
 @AndroidEntryPoint
 class NewOccasionActivity : BaseActivity<ActivityNewOccasionBinding, NewOccasionViewModel>(),
@@ -55,30 +52,34 @@ class NewOccasionActivity : BaseActivity<ActivityNewOccasionBinding, NewOccasion
         get() = R.layout.activity_new_occasion
 
     override fun getViewModelClass() = NewOccasionViewModel::class.java
-
     private var mActivityNewOccasionBinding: ActivityNewOccasionBinding? = null
-
     private val REQUEST_IMAGE = 100
     private var selectedFilePath: String? = null
     private var imageUrl: String? = null
+    private lateinit var alarmManager: AlarmManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.setNavigator(this)
         mActivityNewOccasionBinding = viewDataBinding
-
         // Clearing older images from cache directory
         // don't call this line if you want to choose multiple images in the same activity
         // call this once the bitmap(s) usage is over
         ImagePickerActivity.clearCache(this)
+        alarmManager = this.applicationContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     }
 
     override fun back() {
         onBackPressed()
     }
 
-    override fun successfulOccasionAdd() {
-                onOccasionClick()
+    override fun successfulOccasionAdd(occasion: Occasion?) {
+        AlarmUtil.createAlarm(
+            applicationContext,
+            occasion!!,
+            alarmManager
+        )
+        startNewActivity(OccasionListActivity::class.java, isFinishAll = false, isCurrentFinish = true)
     }
 
     companion object {
@@ -101,6 +102,9 @@ class NewOccasionActivity : BaseActivity<ActivityNewOccasionBinding, NewOccasion
             Objects.requireNonNull(mActivityNewOccasionBinding!!.tvTime.text).toString().trim { it <= ' ' }.isEmpty() ->
                 MyToast.show(this, getString(R.string.empty_time), true)
             else -> {
+                if(imageUrl == null){
+                    imageUrl = mActivityNewOccasionBinding!!.spinnerOccasion.selectedItem.toString()
+                }
                 viewModel.requestRegisterOccasion(
                     mActivityNewOccasionBinding!!.etTitle.text.toString().trim { it <= ' ' },
                     mActivityNewOccasionBinding!!.spinnerOccasion.selectedItem.toString(),
@@ -120,10 +124,6 @@ class NewOccasionActivity : BaseActivity<ActivityNewOccasionBinding, NewOccasion
         TimeSelectionBottomSheetDialogFragment().apply {
             show(supportFragmentManager, TimeSelectionBottomSheetDialogFragment.TAG)
         }
-    }
-
-    override fun onOccasionClick() {
-        startNewActivity(OccasionListActivity::class.java, isFinishAll = false, isCurrentFinish = true)
     }
 
     override fun pictureClick() {
@@ -158,8 +158,7 @@ class NewOccasionActivity : BaseActivity<ActivityNewOccasionBinding, NewOccasion
         if (requestCode == REQUEST_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
                 val uri: Uri? = data?.getParcelableExtra("path")
-                val selectedFileUri1 = uri
-                selectedFilePath = FilePath.getPath(mContext!!, selectedFileUri1!!)
+                selectedFilePath = FilePath.getPath(mContext!!, uri!!)
                 utils!!.loadImageWithoutCash(
                     mContext,
                     uri.toString(),
@@ -210,17 +209,19 @@ class NewOccasionActivity : BaseActivity<ActivityNewOccasionBinding, NewOccasion
         builder.show()
     }
 
-    fun showDatePicker(){
+    private fun showDatePicker(){
         val picker = PersianDatePickerDialog(this)
             .setPositiveButtonString("انتخاب")
 //            .setNegativeButton("بیخیال")
             .setTodayButton("امروز")
             .setTodayButtonVisible(true)
-            .setMinYear(1300)
-            .setMaxYear(PersianDatePickerDialog.THIS_YEAR)
-            .setMaxMonth(PersianDatePickerDialog.THIS_MONTH)
-            .setMaxDay(PersianDatePickerDialog.THIS_DAY)
-            .setInitDate(1370, 3, 13)
+            .setMinYear(PersianDatePickerDialog.THIS_YEAR)
+            .setMaxYear(1404)
+//            .setMaxMonth(PersianDatePickerDialog.THIS_MONTH)
+//            .setMaxDay(PersianDatePickerDialog.THIS_DAY)
+            .setInitDate(PersianDatePickerDialog.THIS_YEAR,
+                PersianDatePickerDialog.THIS_MONTH,
+                PersianDatePickerDialog.THIS_DAY)
             .setActionTextColor(Color.GRAY)
 //            .setTypeFace(typeface)
             .setTitleType(PersianDatePickerDialog.WEEKDAY_DAY_MONTH_YEAR)

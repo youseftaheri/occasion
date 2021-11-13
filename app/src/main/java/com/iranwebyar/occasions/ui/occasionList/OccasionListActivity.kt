@@ -1,7 +1,6 @@
 package com.iranwebyar.occasions.ui.occasionList
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -19,11 +18,21 @@ import androidx.core.view.get
 import androidx.viewpager.widget.ViewPager.*
 import com.iranwebyar.occasions.BR
 import com.iranwebyar.occasions.R
+import com.iranwebyar.occasions.data.model.OccasionsPOJO
 import com.iranwebyar.occasions.databinding.ActivityOccasionListBinding
 import com.iranwebyar.occasions.utils.Const
 import com.iranwebyar.occasions.ui.base.BaseActivity
+import com.iranwebyar.occasions.ui.editOccasion.EditOccasionActivity
 import com.iranwebyar.occasions.ui.newOccasion.NewOccasionActivity
 import dagger.hilt.android.AndroidEntryPoint
+
+import android.app.*
+import android.media.RingtoneManager
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
+import com.iranwebyar.occasions.utils.CommonUtils
+
 
 @AndroidEntryPoint
 class OccasionListActivity : BaseActivity<ActivityOccasionListBinding, OccasionListViewModel>(), OccasionListNavigator{
@@ -119,7 +128,7 @@ class OccasionListActivity : BaseActivity<ActivityOccasionListBinding, OccasionL
         mActivityOccasionListBinding!!.tabs.setTabTextColors(
             ContextCompat.getColor(
                 mContext!!,
-                R.color.colorGray
+                R.color.colorGrayDark
             ), ContextCompat.getColor(mContext!!, R.color.colorWhite)
         )
         mActivityOccasionListBinding!!.tabs.setSelectedTabIndicatorColor(
@@ -142,32 +151,56 @@ class OccasionListActivity : BaseActivity<ActivityOccasionListBinding, OccasionL
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onAddCardClick() {
+//        sendNotification("یادآوری تولد فلانیییی \n تولد تولد تولدش مبااااارک", "اپلیکیشن مناسبت ها")
         startNewActivity(NewOccasionActivity::class.java, isFinishAll = false, isCurrentFinish = false)
     }
 
-    fun deleteCard(cardId: Long) {
-        val inflater = mContext!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val alertDialog: AlertDialog
-        val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(mContext)
-        val layoutView: View = inflater.inflate(R.layout.customized_allert, null)
-        val title: TextView = layoutView.findViewById(R.id.title)
-        val positiveButton: Button = layoutView.findViewById(R.id.btPositive)
-        val negativeButton: Button = layoutView.findViewById(R.id.btNegative)
-        title.text = getString(R.string.sureToDelete)
-        positiveButton.text = getString(R.string.yes)
-        negativeButton.text = getString(R.string.no)
-        dialogBuilder.setView(layoutView)
-        alertDialog = dialogBuilder.create()
-        alertDialog.window!!.attributes.windowAnimations = R.style.DialogAnimation
-        alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        alertDialog.setCancelable(false)
-        alertDialog.show()
-        positiveButton.setOnClickListener(View.OnClickListener {
-            run {
-                viewModel.deleteCard(cardId)
-            } })
-        negativeButton.setOnClickListener(View.OnClickListener { alertDialog.dismiss() })
+    private fun sendNotification(messageBody: String, titleBody: String) {
+        val intent = Intent(this, OccasionListActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        val pendingIntent = PendingIntent.getActivity(
+            this, 0 /* Request code */, intent,
+            PendingIntent.FLAG_ONE_SHOT
+        )
+
+        val channelId = getString(R.string.app_name)+"1-2-3-4-5"+ CommonUtils.randomNumber
+        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        val notificationBuilder = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.light_logo)
+            .setContentTitle(titleBody)
+            .setColor(Color.BLUE)
+            .setContentText(messageBody)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(messageBody))
+            .setAutoCancel(true)
+            .setSound(defaultSoundUri)
+            .setContentIntent(pendingIntent)
+            .setLights(Color.GREEN, 3000, 3000)
+
+
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // Since android Oreo notification channel is needed.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                channelId,
+                "Channel human readable title",
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build())
+    }
+
+
+    fun onEditClick(occasion: OccasionsPOJO.Occasion) {
+        viewModel.setSelectedOccasionToEdit(occasion)
+    }
+
+    override fun openEditActivity() {
+        startNewActivity(EditOccasionActivity::class.java, isFinishAll = false, isCurrentFinish = false)
     }
 
     companion object {

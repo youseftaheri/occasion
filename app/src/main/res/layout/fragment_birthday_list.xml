@@ -37,6 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+<!--                app:birthdayListAdapter="@{viewModel.cardListItemsLiveData}"-->
+<!--                tools:listitem="@layout/item_occasion_view"-->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
@@ -47,8 +49,6 @@
                     android:layout_marginVertical="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_50sdp"
                     android:elevation="@dimen/_4sdp"
-                    app:birthdayListAdapter="@{viewModel.cardListItemsLiveData}"
-                    tools:listitem="@layout/item_occasion_view"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -40,6 +40,11 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="com.iranwebyar.occasions.ui.editOccasion.EditOccasionActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name="com.iranwebyar.occasions.ui.imagePicker.ImagePickerActivity"/>
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
@@ -54,6 +59,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+        <receiver android:name="com.iranwebyar.occasions.utils.AlarmReceiver"
+            android:enabled="true"
+            android:exported="false"
+            />
     </application>
 
     <queries>

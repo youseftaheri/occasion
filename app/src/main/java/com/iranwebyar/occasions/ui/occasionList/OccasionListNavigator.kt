@@ -8,5 +8,6 @@ interface OccasionListNavigator {
     fun showLoading()
     fun hideLoading()
     fun onAddCardClick()
+    fun openEditActivity()
 
 }

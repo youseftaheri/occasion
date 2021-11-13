@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingPrefix,UnusedAttribute"
+    android:layoutDirection="locale">
+
+    <data>
+        <import type="com.iranwebyar.occasions.R" />
+        <variable
+            name="viewModel"
+            type="com.iranwebyar.occasions.ui.occasionList.personalList.PersonalItemViewModel" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/answerCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:onClick="@{() -> viewModel.onEditClick()}"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_5sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/requestCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/llItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="@dimen/_2sdp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="@dimen/_15sdp"
+                                android:layout_height="@dimen/_15sdp"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="@dimen/_5sdp"
+                                android:onClick="@{() -> viewModel.onDeleteClick()}"
+                                android:src="@drawable/ic_baseline_delete_forever_24"
+                                app:tint="@color/colorGray" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_15sdp"
+                                android:layout_height="@dimen/_15sdp"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="@dimen/_5sdp"
+                                android:onClick="@{() -> viewModel.onEditClick()}"
+                                android:src="@drawable/ic_baseline_edit_24"
+                                app:tint="@color/colorGray" />
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@{viewModel.text}"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/bold"
+                        android:gravity="center"
+                        android:layout_gravity="center" />
+
+                        </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/backImage"
+                        app:layout_constraintEnd_toEndOf="@+id/backImage"
+                        android:elevation="@dimen/_3sdp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tvTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="0.7"
+                            android:scaleY="0.7"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@{viewModel.time}"
+                            android:textColor="@color/colorGrayDark"
+                            android:textSize="@dimen/_12sdp"
+                            app:strokeWidth="4dp"
+                            app:drawableEndCompat="@drawable/ic_baseline_av_timer_24"
+                            app:drawableTint="@color/colorGray" />
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:scaleX="0.7"
+                            android:scaleY="0.7"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@{viewModel.date}"
+                            android:textColor="@color/colorGrayDark"
+                            android:textSize="@dimen/_12sdp"
+                            app:drawableEndCompat="@drawable/ic_baseline_date_range_24"
+                            app:drawableTint="@color/colorGray" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvImage"
+                        android:layout_width="@dimen/_55sdp"
+                        android:layout_height="@dimen/_55sdp"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:layout_gravity="center_vertical"
+                        android:shadowColor="@color/colorPrimary"
+                        app:cardElevation="5dp"
+                        android:layout_margin="@dimen/_2sdp"
+                        app:cardCornerRadius="@dimen/_10sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintVertical_bias="0.5">
+                        <!--                android:padding="@dimen/_10sdp"-->
+
+<!--                        <androidx.cardview.widget.CardView-->
+<!--                            android:layout_width="@dimen/_53sdp"-->
+<!--                            android:layout_height="@dimen/_53sdp"-->
+<!--                            android:background="@color/colorPrimary"-->
+<!--                            app:cardBackgroundColor="@color/colorWhite"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            app:cardElevation="3dp"-->
+<!--                            android:shadowColor="@color/colorPrimary"-->
+<!--                            app:cardCornerRadius="@dimen/_10sdp">-->
+                            <ImageView
+                                android:id="@+id/ivSelfie"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:contentDescription="@string/app_name"
+                                android:layout_gravity="center"
+                                android:scaleType="centerCrop"
+                                android:imageUri="@{viewModel.image}" />
+<!--                        </androidx.cardview.widget.CardView>-->
+                    </androidx.cardview.widget.CardView>
+             </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/blur_gradient_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvBuy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:text="@string/remainedTime"
+                        android:elevation="@dimen/_2sdp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:gravity="start|center_vertical"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/_9sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"/>
+
+                    <TextView
+                        android:id="@+id/tvCountdown"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_9sdp"
+                        android:gravity="start|center_vertical"
+                        android:layout_gravity="center_vertical"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>

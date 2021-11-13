@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FF5900</color>
+    <color name="colorPrimaryLight">#FFCAAE</color>
     <color name="colorPrimaryDark">#391400</color>
     <color name="colorAccent">#E40515</color>
     <color name="black">#FF000000</color>
@@ -15,5 +16,6 @@
     <color name="colorWhiteTransparent">#90FFFFFF</color>
     <color name="lightPurple">#CEDAFF</color>
     <color name="transparent">#00000000</color>
+    <color name="light">#FFE8D9</color>
 
 </resources>

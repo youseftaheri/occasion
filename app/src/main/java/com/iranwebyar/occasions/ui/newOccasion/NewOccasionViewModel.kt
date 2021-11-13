@@ -7,6 +7,7 @@ import com.iranwebyar.occasions.data.DataManager
 import com.iranwebyar.occasions.data.model.db.Occasion
 import com.iranwebyar.occasions.ui.base.BaseViewModel
 import com.iranwebyar.occasions.utils.Const
+import com.iranwebyar.occasions.utils.FilePath
 import com.iranwebyar.occasions.utils.rx.SchedulerProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -51,25 +52,25 @@ constructor(dataManager: DataManager?, schedulerProvider: SchedulerProvider?) : 
     fun requestRegisterOccasion(title: String, type: String,
                                 date: String, time: String, image: String?,
                                 alarm: Boolean, notification: Boolean) {
-         navigator!!.showLoading()
-            viewModelScope.launch (Dispatchers.Main) { // launches coroutine in main thread
-                try {
-                    val occasion = Occasion()
+        navigator!!.showLoading()
+        viewModelScope.launch (Dispatchers.Main) { // launches coroutine in main thread
+            try {
+                val occasion = Occasion()
 //                    occasion.id = 5
-                    occasion.type = type
-                    occasion.title = title
-                    occasion.date = date
-                    occasion.time = time
-                    occasion.image = image
-                    occasion.alarm = alarm
-                    occasion.notification = notification
-                    dataManager.insertOccasion(occasion)
-                    navigator!!.successfulOccasionAdd()
-                } catch (e: Exception) {
-                    navigator!!.hideLoading()
-                    navigator!!.handleError(e.message)
-                }
+                occasion.type = type
+                occasion.title = title
+                occasion.date = date
+                occasion.time = time
+                occasion.image = image
+                occasion.alarm = alarm
+                occasion.notification = notification
+                dataManager.insertOccasion(occasion)
+                navigator!!.successfulOccasionAdd(occasion)
+            } catch (e: Exception) {
+                navigator!!.hideLoading()
+                navigator!!.handleError(e.message)
             }
-            navigator!!.hideLoading()
+        }
+        navigator!!.hideLoading()
     }
 }

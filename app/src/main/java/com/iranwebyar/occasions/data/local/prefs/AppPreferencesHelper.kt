@@ -21,6 +21,7 @@ class AppPreferencesHelper @Inject constructor(
         var BASE_URL = MAIN_BASE + "api-v1/"
         var IMAGE_BASE = "http://.../portal/assets/profile-picture/"
         private const val OCCASION_LIST = "OCCASION_LIST"
+        private const val SELECTED_OCCASION = "SELECTED_OCCASION"
 
 
     }
@@ -49,12 +50,12 @@ class AppPreferencesHelper @Inject constructor(
             mPrefs.edit().putString(OCCASION_LIST, Gson().toJson(data)).apply()
         }
 
-//    //<------------------------------------------------------------------------------->\\
-//    //Store & retrieve questionsData
-//    //<-------------------------------------------------------------------------------->\\
-//    override var occasionsData: List<OccasionsPOJO.Data?
-//        get() = Gson().fromJson(mPrefs.getString(QUESTIONS_DATA, null), OccasionsPOJO.Data::class.java)
-//        set(data) {
-//            mPrefs.edit().putString(QUESTIONS_DATA, Gson().toJson(data)).apply()
-//        }
+    //<------------------------------------------------------------------------------->\\
+    //Store & retrieve selectedOccasion
+    //<-------------------------------------------------------------------------------->\\
+    override var selectedOccasion: OccasionsPOJO.Occasion?
+        get() = Gson().fromJson(mPrefs.getString(SELECTED_OCCASION, null), OccasionsPOJO.Occasion::class.java)
+        set(data) {
+            mPrefs.edit().putString(SELECTED_OCCASION, Gson().toJson(data)).apply()
+        }
 }

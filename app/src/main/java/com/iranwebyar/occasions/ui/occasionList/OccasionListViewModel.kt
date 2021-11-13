@@ -73,11 +73,22 @@ constructor(dataManager: DataManager?, schedulerProvider: SchedulerProvider?) : 
         }
 
 
-    fun deleteCard(cardId: Long){
-
-    }
-
     fun onAddCardClick() {
         navigator!!.onAddCardClick()
     }
+
+
+    fun setSelectedOccasionToEdit(occasion: OccasionsPOJO.Occasion) {
+        viewModelScope.launch {
+            try {
+                dataManager.selectedOccasion = occasion
+                navigator!!.openEditActivity()
+            } catch (e: Exception) {
+                navigator!!.hideLoading()
+                navigator!!.handleError(e.message)
+            }
+        }
+    }
+
+
 }

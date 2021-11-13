@@ -19,9 +19,13 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.multidex.MultiDex
 import com.iranwebyar.occasions.MyApplication
+import com.iranwebyar.occasions.R
 import com.iranwebyar.occasions.utils.*
 import com.iranwebyar.occasions.utils.CommonUtils.showLoadingDialog
 import com.iranwebyar.occasions.utils.NetworkUtils.isNetworkConnected
+import io.github.inflationx.calligraphy3.CalligraphyConfig
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor
+import io.github.inflationx.viewpump.ViewPump
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import javax.inject.Inject
 
@@ -78,16 +82,16 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        ViewPump.init(
-//            ViewPump.builder()
-//                .addInterceptor(
-//                    CalligraphyInterceptor(
-//                        CalligraphyConfig.Builder()
-//                            .setDefaultFontPath(Const.FONT_FILE)
-//                            .setFontAttrId(R.attr.fontPath)
-//                            .build())
-//                )
-//                .build())
+        ViewPump.init(
+            ViewPump.builder()
+                .addInterceptor(
+                    CalligraphyInterceptor(
+                        CalligraphyConfig.Builder()
+                            .setDefaultFontPath(Const.FONT_FILE)
+                            .setFontAttrId(R.attr.fontPath)
+                            .build())
+                )
+                .build())
         mContext = this@BaseActivity
         performDataBinding()
     }
